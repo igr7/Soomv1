@@ -61,6 +61,32 @@ app.get('/api/db-test', async (req, res) => {
   }
 });
 
+// Database initialization endpoint (run once to create tables)
+app.post('/api/admin/init-db', async (req, res) => {
+  try {
+    const { exec } = await import('child_process');
+    const { promisify } = await import('util');
+    const execAsync = promisify(exec);
+
+    // Run prisma db push to create tables
+    const { stdout, stderr } = await execAsync('npx prisma db push --accept-data-loss --schema=./prisma/schema.prisma');
+
+    res.json({
+      status: 'success',
+      message: 'Database initialized successfully',
+      stdout,
+      stderr
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      message: error.message,
+      stdout: error.stdout,
+      stderr: error.stderr
+    });
+  }
+});
+
 // API routes
 app.get('/api', (req, res) => {
   res.json({
