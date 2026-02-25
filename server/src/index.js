@@ -6,6 +6,7 @@ import listingRoutes from './routes/listingRoutes.js';
 import bidRoutes from './routes/bidRoutes.js';
 
 // Load environment variables
+// Force rebuild to use prisma db push
 dotenv.config();
 
 const app = express();
