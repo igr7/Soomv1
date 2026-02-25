@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
-    "start": "cd server && npm install && npx prisma generate && npx prisma db push && npm start",
+    "start": "cd server && npm install && npx prisma generate && npx prisma db push --accept-data-loss && npm start",
     "start:mobile": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
