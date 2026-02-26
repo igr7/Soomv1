@@ -1,20 +1,15 @@
 {
   "version": 2,
-  "buildCommand": "cd server && npm install && npx prisma generate",
-  "installCommand": "cd server && npm install",
   "builds": [
     {
-      "src": "server/src/index.js",
+      "src": "api/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "server/src/index.js"
+      "dest": "api/index.js"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
