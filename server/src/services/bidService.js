@@ -35,7 +35,7 @@ export const placeBid = async ({ listingId, bidderId, amount }) => {
   }
 
   const currentHighestBid = listing.currentBid || listing.startPrice;
-  const minimumBid = currentHighestBid + 1; // Minimum increment of 1 SAR
+  const minimumBid = parseFloat(currentHighestBid) + 1; // Minimum increment of 1 SAR
 
   if (amount < minimumBid) {
     throw new Error('BID_TOO_LOW');
